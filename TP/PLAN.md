@@ -12,7 +12,7 @@ Les Test que je voie a réaliser seront:
   - tester la recupération des ensemble de point au près du PointSetManager
   - tester si la classe Triangulation et PointSetManager si elle sont dépendante
 
-#Pourquoi ces tests
+# Pourquoi ces tests
 Comme dit précèdament, même si dans le sujet on parle de classe PointSet et Triangle, j'ai pas besoin de tester si c'est que des getter/setter.
 La connection a la BDD est obligatoire vue que on doit la manipuler.
 
