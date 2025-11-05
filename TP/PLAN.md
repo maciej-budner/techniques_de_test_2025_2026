@@ -2,6 +2,7 @@
 Dans le projet il nous decrit que nous avant 2 class PointSetManager et Triangulator. Nous avant aussi 2 autre classe PointSet et Triangle mais pour elles, je comprend pas pourquoi PointSet n'est pas juste un PointSetManager et donc lui laisser de gerer la même chose que PointSet. De plus, ces 2 classe je ne voie pas de test à faire car pour moi il y a que un setter et getter dans ces classe. Et enfin, nous avant une base de donner pour stocker les points
 
 Les Test que je voie a réaliser seront:
+- test de performence
 - de tester la connection a la BDD
 - tester si on recupére bien la requête API
 - si on a une interface faudra tester l'envoie de requete du client
@@ -14,6 +15,8 @@ Les Test que je voie a réaliser seront:
 
 # Pourquoi ces tests
 Comme dit précèdament, même si dans le sujet on parle de classe PointSet et Triangle, j'ai pas besoin de tester si c'est que des getter/setter.
+
+test de persormance, pour pouvoir voir si notre programme est long ou performant
 
 La connection a la BDD est obligatoire vue que on doit la manipuler.
 
