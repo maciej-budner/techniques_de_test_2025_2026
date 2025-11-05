@@ -3,7 +3,7 @@ Dans le projet il nous decrit que nous avant 2 class PointSetManager et Triangul
 
 Les Test que je voie a réaliser seront:
 - test de performence
-- de tester la connection a la BDD
+- de tester la requête vers la BDD
 - tester si on recupére bien la requête API
 - si on a une interface faudra tester l'envoie de requete du client
 - Pour la classe PointSetManager:
@@ -18,12 +18,12 @@ Comme dit précèdament, même si dans le sujet on parle de classe PointSet et T
 
 test de persormance, pour pouvoir voir si notre programme est long ou performant
 
-La connection a la BDD est obligatoire vue que on doit la manipuler.
+vue que on a pas accer a la BDD, mais que la class Triangulation fait une demande pour avoir des donner alors on doit tester si les requete marche
 
 Faut tester aussi si la requête API fonction car c'est grâce a cette API que on va calculer la triangulation.
 
 Je ne sais pas si il faut tester l'envoie de la requete du client car j'ignore si elle se fera via un terminale, donc pas besoin de tester, ou via une interface, dans le quelle cas faudra tester si la requete s'envoie bien pour ne pas perdre des donné.
 
-la Class PointSetManager aura 1 tests peut-être, car tester l'envoie du pointId pour la classe Traingulation c'est triangulation qui va tester ça et pour le client c'est visuelle donc on n'a pas besoin, mais je ne suis pas sur si je doit tester si l'enrigistement dans la BDD est utille car sa risque de créer des donnés, non souhaité, dans la BDD.
+On doit pas le faire mais si on devait le faire j'imagine que la Class PointSetManager aura 1 tests peut-être, car tester l'envoie du pointId pour la classe Traingulation c'est triangulation qui va tester ça et pour le client c'est visuelle donc on n'a pas besoin, mais je ne suis pas sur si je doit tester si l'enrigistement dans la BDD est utille car sa risque de créer des donnés, non souhaité, dans la BDD.
 
 La Class Triangulation aura plusieur tests. Il aura un test de calcule de triangulation pour voir si la fonction qui calcule ça marche convenablement, puis, on doit tester si on récupére bien le PointId que PointSetManager doit donner. Et enfin, on doit tester si les classe Triangulation et pointSetManager on une dépendance, pour être sur qu'elle fonctionne entre elle.
