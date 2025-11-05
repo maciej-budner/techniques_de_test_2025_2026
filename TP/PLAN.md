@@ -10,7 +10,6 @@ Les Test que je voie a réaliser seront:
   - tester l'enregistrement du nouveau ensemble de point ?(pas sur pour celle là)
 - pour la Classe Triangulation:
 - - tester le calcule de la triangulation des ensembles de point
-  - tester la recupération des ensemble de point au près du PointSetManager
   - tester si la classe Triangulation et PointSetManager si elle sont dépendante
 
 # Pourquoi ces tests
@@ -26,4 +25,4 @@ Je ne sais pas si il faut tester l'envoie de la requete du client car j'ignore s
 
 On doit pas le faire mais si on devait le faire j'imagine que la Class PointSetManager aura 1 tests peut-être, car tester l'envoie du pointId pour la classe Traingulation c'est triangulation qui va tester ça et pour le client c'est visuelle donc on n'a pas besoin, mais je ne suis pas sur si je doit tester si l'enrigistement dans la BDD est utille car sa risque de créer des donnés, non souhaité, dans la BDD.
 
-La Class Triangulation aura plusieur tests. Il aura un test de calcule de triangulation pour voir si la fonction qui calcule ça marche convenablement, puis, on doit tester si on récupére bien le PointId que PointSetManager doit donner. Et enfin, on doit tester si les classe Triangulation et pointSetManager on une dépendance, pour être sur qu'elle fonctionne entre elle.
+La Class Triangulation aura plusieur tests. Il aura un test de calcule de triangulation pour voir si la fonction qui calcule ça marche convenablement et pas besoin de tester si il récupére les donner car il le fait dans se test. Et enfin, on doit tester si les classe Triangulation et pointSetManager on une dépendance, pour être sur qu'elle fonctionne entre elle.
