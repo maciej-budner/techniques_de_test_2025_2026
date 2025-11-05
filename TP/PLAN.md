@@ -14,9 +14,11 @@ Les Test que je voie a réaliser seront:
 
 # Pourquoi ces tests
 Comme dit précèdament, même si dans le sujet on parle de classe PointSet et Triangle, j'ai pas besoin de tester si c'est que des getter/setter.
+
 La connection a la BDD est obligatoire vue que on doit la manipuler.
 
 Faut tester aussi si la requête API fonction car c'est grâce a cette API que on va calculer la triangulation.
+
 Je ne sais pas si il faut tester l'envoie de la requete du client car j'ignore si elle se fera via un terminale, donc pas besoin de tester, ou via une interface, dans le quelle cas faudra tester si la requete s'envoie bien pour ne pas perdre des donné.
 
 la Class PointSetManager aura 1 tests peut-être, car tester l'envoie du pointId pour la classe Traingulation c'est triangulation qui va tester ça et pour le client c'est visuelle donc on n'a pas besoin, mais je ne suis pas sur si je doit tester si l'enrigistement dans la BDD est utille car sa risque de créer des donnés, non souhaité, dans la BDD.
