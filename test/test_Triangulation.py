@@ -1,9 +1,8 @@
 import unittest
-from unittest import TestCase
 import pytest
 import time
 
-class TriangulationTest(unittest.TestCase):
+class test_Triangulation(unittest.TestCase):
 
     @pytest.mark.unit_test
     def test_APIConnectionEchouer(self):
