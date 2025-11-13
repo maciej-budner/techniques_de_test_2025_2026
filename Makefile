@@ -1,10 +1,10 @@
 # Installer les dépendances
 install:
-    pip install -r requirement.txt
+    pip install -r requirements.txt
 
 # Installer les dépendances developpeur
 install_dev:
-    pip install -r dev_requirement.txt
+    pip install -r dev_requirements.txt
 
 #lance tous les tests
 test:
