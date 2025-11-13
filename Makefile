@@ -10,11 +10,15 @@ install_dev:
 test:
 	pytest .\test\test_Triangulation.py
 
-#lance tous les tests sauf les tests de performance 
+#lance tous les tests sauf les tests de performance et integration
 unit_test:
 	pytest -m unit_test
 
-#lance uniquement les tests de performance
+#lance tous les tests sauf les tests de performance et unit_test
+integration:
+	pytest -m integration
+
+#lance uniquement les tests de performance et integration
 perf_test:
 	pytest -m performan
 
