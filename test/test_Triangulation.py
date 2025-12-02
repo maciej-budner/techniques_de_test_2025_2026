@@ -4,131 +4,142 @@ import time
 from unittest.mock import patch
 from scr.triangulation import Triangulation
 
-def setUp(self):
-    # comme un @BeforEach on Junit
-    self.obj = Triangulation()
 
 @pytest.mark.integration
-def test_IntegrationAPIConnectionEchouer(self):
+def test_IntegrationAPIConnectionEchouer():
     listPoint = [(0, 0),(1, 0),(0, 1)]
-    resulta = self.obj.getResultFromAPI(listPoint)
+    obj = Triangulation()
+    resulta = obj.getResultFromAPI(listPoint)
     resultaAttendu = None
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-@patch("scr.triangulator.yaml.safe_load", return_value={"calculeResult": [[(0,0), (1,0), (0,1)],[(1,0), (0,1), (1,1)]]})
-def test_CalculeTriangulationAPartirDe4PointValide(self, mock_yaml):
+@patch("scr.triangulation.yaml.safe_load", return_value={"calculeResult": [[(0,0), (1,0), (0,1)],[(1,0), (0,1), (1,1)]]})
+def test_CalculeTriangulationAPartirDe4PointValide(mock_safe_load):
     listPoint = [(0, 0),(1, 0),(0, 1),(1, 1)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = [[(0,0), (1,0), (0,1)],[(1,0), (0,1), (1,1)]]
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-@patch("scr.triangulator.yaml.safe_load", return_value={"calculeResult": [[(0,0), (1,0), (0,1)]]})
-def test_CalculeTriangulationAPartirDe3PointValide(self, mock_yaml):
+@patch("scr.triangulation.yaml.safe_load", return_value={"calculeResult": [[(0,0), (1,0), (0,1)]]})
+def test_CalculeTriangulationAPartirDe3PointValide(mock_safe_load):
     listPoint = [(0, 0),(1, 0),(0, 1)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = [[(0,0), (1,0), (0,1)]]
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 
 @pytest.mark.integration
-def test_IntegrationCalculeTriangulationAPartirDe4PointValide(self):
+def test_IntegrationCalculeTriangulationAPartirDe4PointValide():
     listPoint = [(0, 0),(1, 0),(0, 1),(1, 1)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = [[(0,0), (1,0), (0,1)],[(1,0), (0,1), (1,1)]]
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.integration
-def test_IntegrationCalculeTriangulationAPartirDe3PointValide(self):
+def test_IntegrationCalculeTriangulationAPartirDe3PointValide():
     listPoint = [(0, 0),(1, 0),(0, 1)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = [[(0,0), (1,0), (0,1)]]
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-def test_CalculeTriangulationAPartirDe2PointDansLeTable(self):
+def test_CalculeTriangulationAPartirDe2PointDansLeTable():
     listPoint = [(0, 0),(1, 0)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = None#"ValueErreur: on atteint une liste de 3 point minimum"
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-def test_CalculeTriangulationAPartirDe1PointDansLeTable(self):
+def test_CalculeTriangulationAPartirDe1PointDansLeTable():
     listPoint = [(0, 0)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = None#"ValueErreur: on atteint une liste de 3 point minimum"
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-def test_CalculeTriangulationAPartirDePointVide(self):
+def test_CalculeTriangulationAPartirDePointVide():
     listPoint = []
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = None#"ValueErreur: on atteint une liste de 3 point minimum"
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-def test_ErreurCalculeTriangulation3pointIdentique(self):
+def test_ErreurCalculeTriangulation3pointIdentique():
     listPoint = [(0, 0),(0, 0),(0, 0)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = None#"ValueErreur: on doit avoir 3 point différent minimum"
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 @pytest.mark.unit_test
-def test_ErreurCalculeTriangulation2pointIdentique(self):
+def test_ErreurCalculeTriangulation2pointIdentique():
     listPoint = [(0, 0),(0, 0),(0, 1)]
-    resulta = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    resulta = obj.calculeTriangulation(listPoint)
     resultaAttendu = None#"ValueErreur: on doit avoir 3 point différent minimum"
     
-    self.assertEqual(resultaAttendu, resulta)
+    assert resultaAttendu== resulta
 
 
 @pytest.mark.integration
-def test_IntegrationRecupereListePointBDDSuccess(self):
+def test_IntegrationRecupereListePointBDDSuccess():
     pointId=1
-    listPoint = self.obj.recuperePointBDD(pointId)
+    obj = Triangulation()
+    listPoint = obj.recuperePointBDD(pointId)
     resultaAttendu = [(0, 0),(1, 0),(0, 1),(1, 1)]
-    self.assertEqual(resultaAttendu, listPoint)
+    assert resultaAttendu== listPoint
 
 
 @pytest.mark.integration
-def test_IntegrationRecupereListePointBDDNonExistante(self):
+def test_IntegrationRecupereListePointBDDNonExistante():
     pointId=0 #0 car la bdd créera jamais un id 0, il commence toujour par 1
-    listePoint = self.obj.recuperePointBDD(pointId)
+    obj = Triangulation()
+    listPoint = obj.recuperePointBDD(pointId)
     resultaAttendu = []
-    self.assertEqual(resultaAttendu, listePoint)
+    assert resultaAttendu== listPoint
 
 
 @pytest.mark.integration
-def test_IntegrationErreurConnectionBDD(self):
+def test_IntegrationErreurConnectionBDD():
     pointId=1
-    listPoint = self.obj.recuperePointBDD(pointId)
+    obj = Triangulation()
+    listPoint = obj.recuperePointBDD(pointId)
     resultaAttendu = None
-    self.assertEqual(resultaAttendu, listPoint)
+    assert resultaAttendu== listPoint
 
 #def testDependanceAvecPointSetManager(self):
     #pas besoin de le faire car les test de recuperation de liste point font comme si c'etait un teste de dependance
 
 @pytest.mark.performance
-def test_CalculTriangulationlLargeData(self):
+def test_CalculTriangulationlLargeData():
     listPoint = [(0, 0),(1, 0),(0, 1),(1, 1),(2, 1),(1, 2),(2, 2),(2, 0),(0, 2),(0, 3),(3, 0),(1, 3),(3, 3),(3,1),(2, 3),(3,2)]
     start = time.perf_counter()
-    result = self.obj.calculeTriangulation(listPoint)
+    obj = Triangulation()
+    result = obj.calculeTriangulation(listPoint)
     end = time.perf_counter()
     print(f"Triangulation took {end - start:.4f} seconds")
     assert result is not None
 
 @pytest.mark.performance
-def test_RealisationGraphLargeData(self):
+def test_RealisationGraphLargeData():
     resulta = [
     [(0,0), (1,0), (0,1)],
     [(1,0), (0,1), (1,1)],
@@ -146,9 +157,9 @@ def test_RealisationGraphLargeData(self):
     [(0,1), (1,1), (0,2)],
     [(1,1), (2,2), (1,2)],
     [(2,2), (3,2), (2,3)]]
-    
+    obj = Triangulation()
     start = time.perf_counter()
-    result = self.obj.dessigneResulta(resulta)
+    result = obj.dessigneResulta(resulta)
     end = time.perf_counter()
     print(f"Dessiner les triangle sa a prit {end - start:.4f} seconds")
     assert result is not None

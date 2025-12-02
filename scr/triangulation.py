@@ -1,15 +1,17 @@
+import yaml
+
 class Triangulation():
     def __init__(self):
         pass
 
-    def getResultFromAPI(listPoint): 
+    def getResultFromAPI(self, listPoint): 
         return None
 
-    def calculeTriangulation(listPoint): 
+    def calculeTriangulation(self, listPoint): 
         return None
 
-    def recuperePointBDD(pointId):
+    def recuperePointBDD(self, pointId):
         return None
         
-    def dessigneResulta(resulta):
+    def dessigneResulta(self, resulta):
         return None
