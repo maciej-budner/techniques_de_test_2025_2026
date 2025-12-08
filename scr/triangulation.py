@@ -1,23 +1,69 @@
 import yaml
+import math
+
+EPS = 1e-9
 
 class Triangulation():
     def __init__(self):
         pass
 
+    #methode de Bowyer-Watson
+    #donc pour chaque point on fait des cercle qui touche 3 point
     def getResultFromAPI(self, listPoint): 
-        with open("triangulator.yml") as calculator:
-            try:
-                dataYaml = yaml.safe_load(calculator)
-                path = dataYaml.get("paths",{})
-                route = path.get("/triangulation/{pointSetId}", {})
-                method = route.get("GET".lower(), {})
-                toutTriangle = method.get("200", {}).get("centent", {})
+        minx = min(x for x,y in listPoint)
+        maxx = max(x for x,y in listPoint)
+        miny = min(y for x,y in listPoint)
+        maxy = max(y for x,y in listPoint)
 
-                return toutTriangle
-            except yaml.YAMLError as exc:
-                print(exc)
-        print("On n'a pas reussis a calculer les triangle")
-        return None
+        dx = maxx - minx
+        dy = maxy - miny
+        delta = max(dx, dy) * 10
+
+        p1 = (minx - delta, miny - delta)
+        p2 = (minx + 2*delta, miny - delta)
+        p3 = (minx - delta, miny + 2*delta)
+
+        triangles = [(p1, p2, p3)]
+
+        for point in listPoint:
+            triangleIncorecte = []
+            for partieTriangle in triangles:
+                (ax, ay), (bx, by), (cx, cy) = partieTriangle
+                d = 2 * (ax*(by-cy) + bx*(cy-ay) + cx*(ay-by))
+                if d == 0:
+                    center, radius = None, None, float("inf")
+                else:
+                    ux = ((ax*ax + ay*ay)*(by-cy) + (bx*bx + by*by)*(cy-ay) + (cx*cx + cy*cy)*(ay-by)) / d
+                    uy = ((ax*ax + ay*ay)*(cx-bx) + (bx*bx + by*by)*(ax-cx) + (cx*cx + cy*cy)*(bx-ax)) / d
+
+                    r = math.dist((ux, uy), (ax, ay))
+                    
+                    center, radius = (ux, uy), r
+                if center is None:
+                    continue
+                if math.dist(point, center) < radius:
+                    triangleIncorecte.append(partieTriangle)
+
+            boundary = []
+            for partieTriangle in triangleIncorecte:
+                for edge in [(partieTriangle[0], partieTriangle[1]), (partieTriangle[1], partieTriangle[2]), (partieTriangle[2], partieTriangle[0])]:
+                    if not any(edge == (e[1], e[0]) for b in triangleIncorecte for e in [(b[0], b[1]), (b[1], b[2]), (b[2], b[0])]):
+                        boundary.append(edge)
+
+            for partieTriangle in triangleIncorecte:
+                triangles.remove(partieTriangle)
+
+            for edge in boundary:
+                triangles.append((edge[0], edge[1], point))
+
+        #renplie notre resulta avec la composition de triangle
+        resulta = []
+        for partieTriangle in triangles:
+            if p1 not in partieTriangle and p2 not in partieTriangle and p3 not in partieTriangle:
+                resulta.append(partieTriangle)
+
+        return resulta
+
 
     #Fonction qui return Tout les triangle possible avec une liste de point donner
     #si cette liste de point a minimum 3 point et minimum 3 point diferent entre elle
@@ -26,7 +72,7 @@ class Triangulation():
             print("ValueErreur: on atteint une liste de 3 point minimum")
             return None
         else:
-            listSansDoublant = listPoint.set()
+            listSansDoublant = set(listPoint)
             #si le nombre de point identique est inferieur a de qui est tolérer on peut continuer sinon erreur
             if(len(listPoint) -len(listSansDoublant) <= len(listPoint) -3):#-3 car on attent au moins 3 point identique
                 #on peut faire les triangle
@@ -44,4 +90,39 @@ class Triangulation():
         return None
         
     def dessigneResulta(self, resulta):
-        return None
+        filename="triangulation.svg"
+        width, height = 800, 800
+        minx, maxx = -10, 10
+        miny, maxy = -10, 10
+        svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">']
+
+        def scale(p):
+            x = (p[0] - minx) / (maxx - minx) * (width - 40) + 20
+            y = (p[1] - miny) / (maxy - miny) * (height - 40) + 20
+            return x, height - y
+        # Dessiner triangles
+        for tri in resulta:
+            pts = [scale(p) for p in tri]
+            points_str = " ".join(f"{x},{y}" for x, y in pts)
+            svg.append(f'<polygon points="{points_str}" fill="none" stroke="blue" stroke-width="2"/>')
+        points_set = set()
+        for tri in resulta:
+            for p in tri:
+                points_set.add(p)
+
+        for p in points_set:
+            x, y = scale(p)
+            svg.append(f'<circle cx="{x}" cy="{y}" r="5" fill="red"/>')
+        svg.append("</svg>")
+
+        with open(filename, "w") as f:
+            f.write("\n".join(svg))
+
+        print(f"SVG généré : {filename}")
+    
+
+triangle = Triangulation()
+
+
+print(triangle.calculeTriangulation([(0, 0),(1, -1),(1, 1),(2, 0),(2, -1),(2, 1)]))
+triangle.dessigneResulta(triangle.calculeTriangulation([(0, 0),(1, -1),(1, 1),(1, 0),(2, 0),(2, -1),(2, 1),(3, 0)]))
