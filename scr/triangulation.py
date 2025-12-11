@@ -31,7 +31,6 @@ class Triangulation:
         -------
         liste de Point
         """
-        minx = min(x for x, y in listPoint)
         minx = min(x for x,y in listPoint)
         maxx = max(x for x,y in listPoint)
         miny = min(y for x,y in listPoint)

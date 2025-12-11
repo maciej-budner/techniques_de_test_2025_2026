@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module scr.triangulation</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="scr.html" class="white">scr</a>.triangulation</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cmaciej%5Cdesktop%5Cuniversiter%5Cmaster%201ilsen%5Cs1%5Ctechniques%20de%20test%5Cprojet%20technique%20de%20test%5Cscr%5Ctriangulation.py">c:\users\maciej\desktop\universiter\master 1ilsen\s1\techniques de test\projet technique de test\scr\triangulation.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="math.html">math</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="scr.triangulation.html#Triangulation">Triangulation</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Triangulation">class <strong>Triangulation</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Gère&nbsp;les&nbsp;opérations&nbsp;liées&nbsp;à&nbsp;la&nbsp;triangulation.<br>
+&nbsp;<br>
+la&nbsp;class&nbsp;possede&nbsp;toute&nbsp;les&nbsp;fonction&nbsp;qui&nbsp;nous&nbsp;permet&nbsp;<br>
+de&nbsp;realiser&nbsp;une&nbsp;triangulation&nbsp;et&nbsp;avoir&nbsp;un&nbsp;aspect&nbsp;visuel<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Triangulation-__init__"><strong>__init__</strong></a>(self)</dt><dd><span class="code">inisialise&nbsp;la&nbsp;class.<br>
+&nbsp;<br>
+Pour&nbsp;notre&nbsp;cas,&nbsp;<br>
+elle&nbsp;sert&nbsp;juste&nbsp;pour&nbsp;uttiliser&nbsp;ces&nbsp;fonction.</span></dd></dl>
+
+<dl><dt><a name="Triangulation-calculeTriangulation"><strong>calculeTriangulation</strong></a>(self, listPoint)</dt><dd><span class="code">Verifie&nbsp;si&nbsp;la&nbsp;list&nbsp;de&nbsp;Point&nbsp;valide,&nbsp;et&nbsp;return&nbsp;resulta&nbsp;<br>
+&nbsp;<br>
+Cette&nbsp;fonction&nbsp;verifie&nbsp;:<br>
+si&nbsp;la&nbsp;list&nbsp;est&nbsp;plus&nbsp;grande&nbsp;ou&nbsp;egale&nbsp;a&nbsp;3.<br>
+Si&nbsp;parmit&nbsp;cette&nbsp;list&nbsp;il&nbsp;y&nbsp;a&nbsp;assez&nbsp;de&nbsp;point&nbsp;<br>
+non&nbsp;doublonner&nbsp;pour&nbsp;realiser&nbsp;une&nbsp;triangulation<br>
+Si&nbsp;c'est&nbsp;le&nbsp;cas,&nbsp;renvoie&nbsp;une&nbsp;matrix&nbsp;de&nbsp;point.<br>
+sinon,&nbsp;renvoie&nbsp;None.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listPoint&nbsp;:&nbsp;tableau&nbsp;de&nbsp;Point<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+liste&nbsp;de&nbsp;Point&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;si&nbsp;tout&nbsp;les&nbsp;test&nbsp;sont&nbsp;bon<br>
+None&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sinon</span></dd></dl>
+
+<dl><dt><a name="Triangulation-dessigneResulta"><strong>dessigneResulta</strong></a>(self, resulta)</dt><dd><span class="code">Designe&nbsp;dans&nbsp;un&nbsp;svg,&nbsp;notre&nbsp;figure.<br>
+&nbsp;<br>
+Cette&nbsp;fonction&nbsp;nous&nbsp;permetra&nbsp;de&nbsp;designer<br>
+tout&nbsp;nos&nbsp;triangle.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+resulta&nbsp;:&nbsp;liste&nbsp;de&nbsp;Point<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+bool</span></dd></dl>
+
+<dl><dt><a name="Triangulation-getResultFromAPI"><strong>getResultFromAPI</strong></a>(self, listPoint)</dt><dd><span class="code">Organise&nbsp;les&nbsp;points&nbsp;et&nbsp;génère&nbsp;une&nbsp;triangulation.<br>
+&nbsp;<br>
+Cette&nbsp;fonction&nbsp;nous&nbsp;permettra&nbsp;d'avoir&nbsp;une&nbsp;<br>
+liste&nbsp;de&nbsp;triangles&nbsp;qui&nbsp;permettra&nbsp;<br>
+de&nbsp;designer&nbsp;les&nbsp;figures.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listPoint&nbsp;:&nbsp;tableau&nbsp;de&nbsp;Point<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+liste&nbsp;de&nbsp;Point</span></dd></dl>
+
+<dl><dt><a name="Triangulation-recuperePointBDD"><strong>recuperePointBDD</strong></a>(self, pointId)</dt><dd><span class="code">Appel&nbsp;la&nbsp;class&nbsp;PointSetManage,&nbsp;get&nbsp;donner&nbsp;de&nbsp;la&nbsp;BDD.<br>
+&nbsp;<br>
+Cette&nbsp;fonction&nbsp;fait&nbsp;juste&nbsp;un&nbsp;appel.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+pointId&nbsp;:&nbsp;int<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+tableau&nbsp;de&nbsp;Point</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
