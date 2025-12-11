@@ -1,15 +1,37 @@
-import yaml
 import math
+from scr.PointSetManage import PointSetManage
+class Triangulation:
+    """Gère les opérations liées à la triangulation.
+    
+    la class possede toute les fonction qui nous permet 
+    de realiser une triangulation et avoir un aspect visuel
+    """
 
-EPS = 1e-9
-
-class Triangulation():
     def __init__(self):
+        """inisialise la class.
+
+        Pour notre cas, 
+        elle sert juste pour uttiliser ces fonction.
+        """
         pass
 
-    #methode de Bowyer-Watson
-    #donc pour chaque point on fait des cercle qui touche 3 point
-    def getResultFromAPI(self, listPoint): 
+    def getResultFromAPI(self, 
+                     listPoint): 
+        """Organise les points et génère une triangulation.
+
+        Cette fonction nous permettra d'avoir une 
+        liste de triangles qui permettra 
+        de designer les figures.
+
+        Parameters
+        ----------
+        listPoint : tableau de Point
+
+        Returns
+        -------
+        liste de Point
+        """
+        minx = min(x for x, y in listPoint)
         minx = min(x for x,y in listPoint)
         maxx = max(x for x,y in listPoint)
         miny = min(y for x,y in listPoint)
@@ -33,8 +55,12 @@ class Triangulation():
                 if d == 0:
                     center, radius = None, None, float("inf")
                 else:
-                    ux = ((ax*ax + ay*ay)*(by-cy) + (bx*bx + by*by)*(cy-ay) + (cx*cx + cy*cy)*(ay-by)) / d
-                    uy = ((ax*ax + ay*ay)*(cx-bx) + (bx*bx + by*by)*(ax-cx) + (cx*cx + cy*cy)*(bx-ax)) / d
+                    ux = ((ax*ax + ay*ay)*(by-cy) + 
+                          (bx*bx + by*by)*(cy-ay) + 
+                          (cx*cx + cy*cy)*(ay-by)) / d
+                    uy = ((ax*ax + ay*ay)*(cx-bx) + 
+                          (bx*bx + by*by)*(ax-cx) + 
+                          (cx*cx + cy*cy)*(bx-ax)) / d
 
                     r = math.dist((ux, uy), (ax, ay))
                     
@@ -46,8 +72,11 @@ class Triangulation():
 
             boundary = []
             for partieTriangle in triangleIncorecte:
-                for edge in [(partieTriangle[0], partieTriangle[1]), (partieTriangle[1], partieTriangle[2]), (partieTriangle[2], partieTriangle[0])]:
-                    if not any(edge == (e[1], e[0]) for b in triangleIncorecte for e in [(b[0], b[1]), (b[1], b[2]), (b[2], b[0])]):
+                for edge in [(partieTriangle[0], partieTriangle[1]), 
+                             (partieTriangle[1], partieTriangle[2]), 
+                             (partieTriangle[2], partieTriangle[0])]:
+                    if not any(edge == (e[1], e[0]) for b in triangleIncorecte for e in 
+                               [(b[0], b[1]), (b[1], b[2]), (b[2], b[0])]):
                         boundary.append(edge)
 
             for partieTriangle in triangleIncorecte:
@@ -58,9 +87,9 @@ class Triangulation():
 
         #renplie notre resulta avec la composition de triangle
         resulta = []
-        for partieTriangle in triangles:
-            if p1 not in partieTriangle and p2 not in partieTriangle and p3 not in partieTriangle:
-                resulta.append(partieTriangle)
+        for partgeo in triangles:
+            if p1 not in partgeo and p2 not in partgeo and p3 not in partgeo:
+                resulta.append(partgeo)
 
         return resulta
 
@@ -68,33 +97,81 @@ class Triangulation():
     #Fonction qui return Tout les triangle possible avec une liste de point donner
     #si cette liste de point a minimum 3 point et minimum 3 point diferent entre elle
     def calculeTriangulation(self, listPoint): 
+        """Verifie si la list de Point valide, et return resulta 
+
+        Cette fonction verifie :
+        si la list est plus grande ou egale a 3.
+        Si parmit cette list il y a assez de point 
+        non doublonner pour realiser une triangulation
+        Si c'est le cas, renvoie une matrix de point.
+        sinon, renvoie None.
+
+        Parameters
+        ----------
+        listPoint : tableau de Point
+
+        Returns
+        -------
+        liste de Point 
+            si tout les test sont bon
+        None 
+            sinon
+        """
         if(len(listPoint) < 3):
             print("ValueErreur: on atteint une liste de 3 point minimum")
             return None
         else:
             listSansDoublant = set(listPoint)
-            #si le nombre de point identique est inferieur a de qui est tolérer on peut continuer sinon erreur
-            if(len(listPoint) -len(listSansDoublant) <= len(listPoint) -3):#-3 car on attent au moins 3 point identique
+            #si le nombre de point identique est inferieur a de qui est tolérer 
+            # on peut continuer sinon erreur
+            if(len(listPoint) -len(listSansDoublant) <= len(listPoint) -3):
+                #-3 car on attent au moins 3 point identique
                 #on peut faire les triangle
                 toutLesTriangle = self.getResultFromAPI(listPoint)
                 if(toutLesTriangle is not None):
                     return toutLesTriangle
                 else:
-                    print("Erreur API: une erreur est survenue lors de l'appel de l'api")
+                    print("Erreur API:une erreur est survenue lors de l'appel de l'api")
                     return None
             else:
                 print("ValueErreur: on doit avoir 3 point différent minimum")
                 return None
 
     def recuperePointBDD(self, pointId):
-        return None
+        """Appel la class PointSetManage, get donner de la BDD.
+
+        Cette fonction fait juste un appel.
+        
+        Parameters
+        ----------
+        pointId : int
+
+        Returns
+        -------
+        tableau de Point
+        """
+        appelBdd = PointSetManage()
+        return appelBdd.recupéreListePoint(pointId)
         
     def dessigneResulta(self, resulta):
+        """Designe dans un svg, notre figure.
+
+        Cette fonction nous permetra de designer
+        tout nos triangle.
+        
+        Parameters
+        ----------
+        resulta : liste de Point
+
+        Returns
+        -------
+        bool
+        """
         filename="triangulation.svg"
         width, height = 800, 800
         minx, maxx = -10, 10
         miny, maxy = -10, 10
-        svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">']
+        svg=[f'<svg xmlns="http://www.w3.org/2000/svg"width="{width}"height="{height}">']
 
         def scale(p):
             x = (p[0] - minx) / (maxx - minx) * (width - 40) + 20
@@ -119,10 +196,14 @@ class Triangulation():
             f.write("\n".join(svg))
 
         print(f"SVG généré : {filename}")
+        return True #tout c'est bien passer
     
 
-triangle = Triangulation()
+#pour tester
+#triangle = Triangulation()
 
 
-print(triangle.calculeTriangulation([(0, 0),(1, -1),(1, 1),(2, 0),(2, -1),(2, 1)]))
-triangle.dessigneResulta(triangle.calculeTriangulation([(0, 0),(1, -1),(1, 1),(1, 0),(2, 0),(2, -1),(2, 1),(3, 0)]))
+#print(triangle.calculeTriangulation([(0, 0),(1, 0),(0, 1)]))
+#triangle.dessigneResulta(
+#    triangle.calculeTriangulation(
+#        [(0, 0),(1, -1),(1, 1),(1, 0),(2, 0),(2, -1),(2, 1),(3, 0)]))

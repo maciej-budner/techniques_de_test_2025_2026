@@ -1,18 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800">
-<polygon points="400.0,400.0 438.00000000000006,438.0 438.00000000000006,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="438.00000000000006,361.99999999999994 400.0,400.0 438.00000000000006,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="438.00000000000006,400.0 438.00000000000006,438.0 476.0,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="438.00000000000006,361.99999999999994 438.00000000000006,400.0 476.0,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="476.0,400.0 438.00000000000006,438.0 476.0,438.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="438.00000000000006,361.99999999999994 476.0,400.0 476.0,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="476.0,400.0 476.0,438.0 514.0,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<polygon points="476.0,361.99999999999994 476.0,400.0 514.0,400.0" fill="none" stroke="blue" stroke-width="2"/>
-<circle cx="476.0" cy="438.0" r="5" fill="red"/>
+<svg xmlns="http://www.w3.org/2000/svg"width="800"height="800">
+<polygon points="400.0,400.0 438.00000000000006,400.0 400.0,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="438.00000000000006,400.0 400.0,361.99999999999994 438.00000000000006,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="400.0,400.0 476.0,400.0 400.0,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="438.00000000000006,286.0 514.0,361.99999999999994 438.00000000000006,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="476.0,286.0 514.0,324.0 476.0,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="400.0,324.0 476.0,400.0 476.0,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="438.00000000000006,361.99999999999994 476.0,361.99999999999994 438.00000000000006,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="476.0,361.99999999999994 514.0,400.0 514.0,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="438.00000000000006,324.0 476.0,324.0 438.00000000000006,286.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="476.0,324.0 514.0,361.99999999999994 476.0,286.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="400.0,286.0 438.00000000000006,324.0 400.0,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="514.0,400.0 514.0,361.99999999999994 476.0,400.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="476.0,400.0 514.0,361.99999999999994 476.0,361.99999999999994" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="400.0,361.99999999999994 438.00000000000006,361.99999999999994 400.0,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="438.00000000000006,361.99999999999994 476.0,324.0 438.00000000000006,324.0" fill="none" stroke="blue" stroke-width="2"/>
+<polygon points="476.0,324.0 514.0,324.0 476.0,286.0" fill="none" stroke="blue" stroke-width="2"/>
+<circle cx="400.0" cy="361.99999999999994" r="5" fill="red"/>
+<circle cx="438.00000000000006" cy="324.0" r="5" fill="red"/>
 <circle cx="476.0" cy="361.99999999999994" r="5" fill="red"/>
 <circle cx="400.0" cy="400.0" r="5" fill="red"/>
+<circle cx="514.0" cy="361.99999999999994" r="5" fill="red"/>
 <circle cx="438.00000000000006" cy="361.99999999999994" r="5" fill="red"/>
+<circle cx="400.0" cy="286.0" r="5" fill="red"/>
 <circle cx="476.0" cy="400.0" r="5" fill="red"/>
-<circle cx="438.00000000000006" cy="438.0" r="5" fill="red"/>
 <circle cx="514.0" cy="400.0" r="5" fill="red"/>
+<circle cx="476.0" cy="286.0" r="5" fill="red"/>
+<circle cx="400.0" cy="324.0" r="5" fill="red"/>
+<circle cx="476.0" cy="324.0" r="5" fill="red"/>
 <circle cx="438.00000000000006" cy="400.0" r="5" fill="red"/>
+<circle cx="514.0" cy="324.0" r="5" fill="red"/>
+<circle cx="438.00000000000006" cy="286.0" r="5" fill="red"/>
 </svg>
