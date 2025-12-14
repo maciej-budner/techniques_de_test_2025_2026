@@ -9,5 +9,5 @@ Malgré que j'ai pas bien décrit tout les test que je devais réaliser, je trou
 A l'avenir, je décrirer mieux ma statégie de test, je consacrerais plus de temps pour savoir si des mock sont possible et je commancerais directement a écrire la docstring, pour gagner du temps.
 
 # Retour sur le projet
-Je trouve que l'exercice est plutôt compliqué, car c'est dificile de savoir quelle fonction yu aura dans ta class et se quelle va sortir. Généralement je préfere écrire mes class avec se quelle vont sortie puis tester avec la méthode Green, red et refractore.
+Je trouve que l'exercice est plutôt compliqué, car c'est dificile de savoir quelle fonction il y aura dans ta class et se quelle va sortir. Généralement je préfere écrire mes class avec se quelle vont sortie puis tester avec la méthode Green, red et refractore.
 Mais se qui est intéresant, c'est que une foix que tes test sont fait, tu sais se que tu doit faire et donc tu avance un peu plus vite.

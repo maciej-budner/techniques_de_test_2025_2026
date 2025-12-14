@@ -1,3 +1,8 @@
+"""Module de triangulation.
+
+Ce module gère les opérations liées à la triangulation.
+"""
+
 import math
 from scr.PointSetManage import PointSetManage
 class Triangulation:
@@ -8,28 +13,29 @@ class Triangulation:
     """
 
     def __init__(self):
-        """inisialise la class.
+        """Inisialise la class.
 
-        Pour notre cas, 
+        Pour notre cas,
         elle sert juste pour uttiliser ces fonction.
         """
         pass
 
-    def getResultFromAPI(self, 
-                     listPoint): 
+    def getResultFromAPI(self, listPoint):
         """Organise les points et génère une triangulation.
 
-        Cette fonction nous permettra d'avoir une 
-        liste de triangles qui permettra 
+        Cette fonction nous permettra d'avoir une
+        liste de triangles qui permettra
         de designer les figures.
 
         Parameters
         ----------
         listPoint : tableau de Point
+            Liste des points à trianguler.
 
         Returns
         -------
         liste de Point
+
         """
         minx = min(x for x,y in listPoint)
         maxx = max(x for x,y in listPoint)
@@ -95,12 +101,12 @@ class Triangulation:
 
     #Fonction qui return Tout les triangle possible avec une liste de point donner
     #si cette liste de point a minimum 3 point et minimum 3 point diferent entre elle
-    def calculeTriangulation(self, listPoint): 
-        """Verifie si la list de Point valide, et return resulta 
+    def calculeTriangulation(self, listPoint):
+        """Vérifie si la list de Point valide, et return resulta.
 
         Cette fonction verifie :
         si la list est plus grande ou egale a 3.
-        Si parmit cette list il y a assez de point 
+        Si parmit cette list il y a assez de point
         non doublonner pour realiser une triangulation
         Si c'est le cas, renvoie une matrix de point.
         sinon, renvoie None.
@@ -108,13 +114,15 @@ class Triangulation:
         Parameters
         ----------
         listPoint : tableau de Point
+            Liste des points à trianguler.
 
         Returns
         -------
-        liste de Point 
+        liste de Point
             si tout les test sont bon
-        None 
+        None
             sinon
+
         """
         if(len(listPoint) < 3):
             print("ValueErreur: on atteint une liste de 3 point minimum")
@@ -140,14 +148,16 @@ class Triangulation:
         """Appel la class PointSetManage, get donner de la BDD.
 
         Cette fonction fait juste un appel.
-        
+
         Parameters
         ----------
         pointId : int
+            Identifiant du point à récupérer.
 
         Returns
         -------
         tableau de Point
+
         """
         appelBdd = PointSetManage()
         return appelBdd.recupéreListePoint(pointId)
@@ -157,14 +167,16 @@ class Triangulation:
 
         Cette fonction nous permetra de designer
         tout nos triangle.
-        
+
         Parameters
         ----------
         resulta : liste de Point
+            Liste des triangles à dessiner.
 
         Returns
         -------
         bool
+
         """
         filename="triangulation.svg"
         width, height = 800, 800
@@ -180,7 +192,10 @@ class Triangulation:
         for tri in resulta:
             pts = [scale(p) for p in tri]
             points_str = " ".join(f"{x},{y}" for x, y in pts)
-            svg.append(f'<polygon points="{points_str}" fill="none" stroke="blue" stroke-width="2"/>')
+            svg.append(
+                f'<polygon points="{points_str}" fill="none" stroke="blue" '
+                'stroke-width="2"/>'
+            )
         points_set = set()
         for tri in resulta:
             for p in tri:
