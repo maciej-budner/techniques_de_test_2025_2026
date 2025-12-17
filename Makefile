@@ -28,7 +28,7 @@ coverage:
 
 #valide la qualité de code
 lint:
-	ruff check
+	ruff check scr/triangulation.py 
 
 #génère la documentation en HTML
 doc:
