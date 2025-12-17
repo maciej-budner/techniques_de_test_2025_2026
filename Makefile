@@ -24,7 +24,7 @@ perf_test:
 
 #génère un rapport de couverture de code 
 coverage:
-	coverage run -m pytest
+	coverage run -m pytest test
 
 #valide la qualité de code
 lint:
@@ -32,4 +32,4 @@ lint:
 
 #génère la documentation en HTML
 doc:
-	pdoc3 .\main\Triangulation.py
+	pdoc3 -w scr.triangulation.py test.test_Triangulation
